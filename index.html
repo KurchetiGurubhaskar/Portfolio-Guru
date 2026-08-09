@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-accent="blue">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Premium Portfolio — Full-Stack Developer specializing in Python, Django, React & modern web technologies. View projects, skills, and get in touch.">
+  <meta name="keywords" content="portfolio, developer, python, django, react, full-stack, web development">
+  <meta name="author" content="Guru">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta property="og:title" content="Guru — Full-Stack Developer Portfolio">
+  <meta property="og:description"
+    content="Premium portfolio showcasing projects, skills, and experience in modern web development.">
+  <meta property="og:type" content="website">
+  <title>Guru — Full-Stack Developer Portfolio</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- DevIcon (tech logos) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════ LOADER ═══════════════ -->
+  <div id="loader">
+    <div class="loader-logo">Portfolio</div>
+    <div class="loader-spinner"></div>
+    <div class="loader-progress">
+      <div class="loader-progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SCROLL PROGRESS ═══════════════ -->
+  <div id="scroll-progress"></div>
+
+  <!-- ═══════════════ CURSOR GLOW ═══════════════ -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- ═══════════════ ANIMATED BG ═══════════════ -->
+  <div class="bg-gradient-orb"></div>
+  <div class="bg-gradient-orb"></div>
+  <div class="bg-gradient-orb"></div>
+  <div class="bg-grid"></div>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav class="navbar-premium" id="navbar">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="#hero" class="nav-logo">
+          <span class="logo-dot"></span>
+          <span id="nav-logo-text">Guru</span>
+        </a>
+        <button class="navbar-toggler d-lg-none" type="button" onclick="toggleMobileNav()"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-flex align-items-center gap-1" id="desktop-nav">
+          <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+          <a href="#about" class="nav-link" data-section="about">About</a>
+          <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+          <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+          <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+          <a href="#education" class="nav-link" data-section="education">Education</a>
+          <a href="#certificates" class="nav-link" data-section="certificates">Certificates</a>
+          <a href="#achievements" class="nav-link" data-section="achievements">Achievements</a>
+          <a href="#services" class="nav-link" data-section="services">Services</a>
+          <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        </div>
+      </div>
+      <!-- Mobile Nav -->
+      <div class="collapse" id="mobile-nav">
+        <div class="d-flex flex-column gap-1 mt-3 p-3"
+          style="background: var(--nav-bg); backdrop-filter: blur(20px); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <a href="#hero" class="nav-link" onclick="closeMobileNav()">Home</a>
+          <a href="#about" class="nav-link" onclick="closeMobileNav()">About</a>
+          <a href="#skills" class="nav-link" onclick="closeMobileNav()">Skills</a>
+          <a href="#projects" class="nav-link" onclick="closeMobileNav()">Projects</a>
+          <a href="#experience" class="nav-link" onclick="closeMobileNav()">Experience</a>
+          <a href="#education" class="nav-link" onclick="closeMobileNav()">Education</a>
+          <a href="#certificates" class="nav-link" onclick="closeMobileNav()">Certificates</a>
+          <a href="#achievements" class="nav-link" onclick="closeMobileNav()">Achievements</a>
+          <a href="#services" class="nav-link" onclick="closeMobileNav()">Services</a>
+          <a href="#contact" class="nav-link" onclick="closeMobileNav()">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO SECTION ═══════════════ -->
+  <section id="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7 order-2 order-lg-1">
+          <div class="hero-content">
+            <p class="hero-greeting reveal">👋 Hello, I'm</p>
+            <h1 class="hero-name reveal delay-1" id="hero-name">Guru</h1>
+            <div class="hero-title-line reveal delay-2">
+              <span id="typing-text"></span><span class="typing-cursor"></span>
+            </div>
+            <p class="hero-description reveal delay-3" id="hero-bio">
+              A passionate full-stack developer crafting modern, elegant, and performant digital experiences.
+              Specializing in Python, Django, React, and cutting-edge web technologies.
+            </p>
+            <div class="hero-buttons reveal delay-4">
+              <a href="#" class="btn-premium btn-primary-premium ripple magnetic" id="resume-btn">
+                <i class="fas fa-download"></i> Download Resume
+              </a>
+              <a href="#contact" class="btn-premium btn-outline-premium ripple magnetic">
+                <i class="fas fa-paper-plane"></i> Hire Me
+              </a>
+              <a href="#contact" class="btn-premium btn-outline-premium ripple magnetic">
+                <i class="fas fa-envelope"></i> Contact Me
+              </a>
+              <a href="#" class="btn-icon-premium magnetic" id="github-hero-btn" target="_blank" rel="noopener"
+                aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" class="btn-icon-premium magnetic" id="linkedin-hero-btn" target="_blank" rel="noopener"
+                aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+            <div class="hero-stats reveal delay-5">
+              <div class="hero-stat">
+                <span class="hero-stat-number counter" data-target="15">0</span>
+                <span class="hero-stat-label">Projects</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat-number counter" data-target="2">0</span>
+                <span class="hero-stat-label">Years Exp</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat-number counter" data-target="12">0</span>
+                <span class="hero-stat-label">Technologies</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat-number counter" data-target="8">0</span>
+                <span class="hero-stat-label">Certificates</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 order-1 order-lg-2 text-center">
+          <div class="hero-profile-wrapper reveal-scale">
+            <div class="hero-profile-ring"></div>
+            <div class="hero-profile-ring ring-2"></div>
+            <img
+              src="https://api.dicebear.com/9.x/initials/svg?seed=G&backgroundColor=3b82f6&textColor=ffffff&fontSize=42"
+              alt="Profile" class="hero-profile-img" id="hero-profile-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ABOUT SECTION ═══════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge reveal"><i class="fas fa-user"></i> About Me</span>
+        <h2 class="section-title reveal">Get to Know Me</h2>
+        <p class="section-subtitle reveal">Passionate about building digital experiences that make a difference.</p>
+      </div>
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5 reveal-left">
+          <div class="about-image-wrapper text-center">
+            <img src="https://api.dicebear.com/9.x/shapes/svg?seed=portfolio&backgroundColor=0a0a0f" alt="About"
+              class="about-image" id="about-image">
+          </div>
+        </div>
+        <div class="col-lg-7 reveal-right">
+          <h3 class="mb-3" style="font-family: var(--font-display); font-weight: 700;">Full-Stack Developer &amp; Tech
+            Enthusiast</h3>
+          <p class="text-secondary mb-4" id="about-description" style="color: var(--text-secondary);">
+            I'm a dedicated full-stack developer with a passion for creating elegant solutions to complex problems. With
+            expertise in Python, Django, and modern JavaScript frameworks, I build scalable applications that deliver
+            exceptional user experiences. I believe in clean code, continuous learning, and the power of technology to
+            transform ideas into reality.
+          </p>
+          <div class="row g-3" id="about-highlights">
+            <div class="col-md-6">
+              <div class="glass-card about-highlight-card">
+                <div class="about-highlight-icon"><i class="fas fa-code"></i></div>
+                <div>
+                  <div class="about-highlight-title">Clean Code</div>
+                  <div class="about-highlight-text">Writing maintainable, efficient code</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="glass-card about-highlight-card">
+                <div class="about-highlight-icon"><i class="fas fa-rocket"></i></div>
+                <div>
+                  <div class="about-highlight-title">Fast Learner</div>
+                  <div class="about-highlight-text">Adapting to new technologies quickly</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="glass-card about-highlight-card">
+                <div class="about-highlight-icon"><i class="fas fa-users"></i></div>
+                <div>
+                  <div class="about-highlight-title">Team Player</div>
+                  <div class="about-highlight-text">Effective collaboration & communication</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="glass-card about-highlight-card">
+                <div class="about-highlight-icon"><i class="fas fa-lightbulb"></i></div>
+                <div>
+                  <div class="about-highlight-title">Problem Solver</div>
+                  <div class="about-highlight-text">Creative solutions for tough challenges</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SKILLS SECTION ═══════════════ -->
+  <section id="skills">
+    <div class="floating-icons-container" id="floating-icons"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge reveal"><i class="fas fa-cogs"></i> My Skills</span>
+        <h2 class="section-title reveal">Technologies I Work With</h2>
+        <p class="section-subtitle reveal">Constantly learning and expanding my tech stack.</p>
+      </div>
+      <div class="row g-4" id="skills-grid">
+        <!-- Skills are rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROJECTS SECTION ═══════════════ -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge reveal"><i class="fas fa-folder-open"></i> Portfolio</span>
+        <h2 class="section-title reveal">Featured Projects</h2>
+        <p class="section-subtitle reveal">Showcasing my best work and creative solutions.</p>
+      </div>
+      <!-- Search -->
+      <div class="project-search reveal">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="project-search-input" placeholder="Search projects..." aria-label="Search projects">
+      </div>
+      <!-- Filters -->
+      <div class="project-filters reveal" id="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+      </div>
+      <!-- Projects Carousel -->
+      <div class="projects-grid-layout" id="projects-grid">
+        <!-- Projects are rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EXPERIENCE SECTION ═══════════════ -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge reveal"><i class="fas fa-briefcase"></i> Experience</span>
+        <h2 class="section-title reveal">Work Experience</h2>
+        <p class="section-subtitle reveal">My professional journey and career milestones.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="timeline" id="experience-timeline">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EDUCATION SECTION ═══════════════ -->
+  <section id="education">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge reveal"><i class="fas fa-graduation-cap"></i> Education</span>
+        <h2 class="section-title reveal">Academic Background</h2>
+        <p class="section-subtitle reveal">My educational qualifications and learning path.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="timeline" id="education-timeline">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CERTIFICATES SECTION ═══════════════ -->
+  <section id="certificates">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge reveal"><i class="fas fa-certificate"></i> Certificates</span>
+        <h2 class="section-title reveal">Certifications & Courses</h2>
+        <p class="section-subtitle reveal">Professional certifications and completed courses.</p>
+      </div>
+      <div class="row g-4" id="certificates-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ACHIEVEMENTS SECTION ═══════════════ -->
+  <section id="achievements">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge reveal"><i class="fas fa-trophy"></i> Achievements</span>
+        <h2 class="section-title reveal">Notable Achievements</h2>
+        <p class="section-subtitle reveal">Milestones and accomplishments I'm proud of.</p>
+      </div>
+      <div class="row g-4" id="achievements-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SERVICES SECTION ═══════════════ -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge reveal"><i class="fas fa-concierge-bell"></i> Services</span>
+        <h2 class="section-title reveal">What I Offer</h2>
+        <p class="section-subtitle reveal">Professional services tailored to your needs.</p>
+      </div>
+      <div class="row g-4" id="services-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT SECTION ═══════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge reveal"><i class="fas fa-envelope"></i> Get In Touch</span>
+        <h2 class="section-title reveal">Contact Me</h2>
+        <p class="section-subtitle reveal">Let's discuss your next project or opportunity.</p>
+      </div>
+      <div class="row g-5">
+        <div class="col-lg-5 reveal-left">
+          <div class="d-flex flex-column gap-3" id="contact-info-cards">
+            <!-- Rendered by JS -->
+          </div>
+          <div class="mt-4 d-flex flex-wrap gap-2" id="contact-action-btns">
+            <!-- Rendered by JS -->
+          </div>
+          <div class="map-embed mt-4" id="map-container">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+        <div class="col-lg-7 reveal-right">
+          <div class="glass-card" style="padding: 2.5rem;">
+            <form class="contact-form" id="contact-form">
+              <input type="hidden" name="access_key" value="e2fe3bf2-10b0-45fd-b3d6-1ba4e2bd28ba">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="form-floating premium-floating">
+                    <input type="text" class="form-control" name="name" id="contact-name" placeholder="Full Name" required>
+                    <label for="contact-name"><i class="fas fa-user text-secondary me-2"></i>Full Name</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating premium-floating">
+                    <input type="email" class="form-control" name="email" id="contact-email" placeholder="Email Address" required>
+                    <label for="contact-email"><i class="fas fa-envelope text-secondary me-2"></i>Email Address</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating premium-floating">
+                    <input type="text" class="form-control" name="subject" id="contact-subject" placeholder="Subject">
+                    <label for="contact-subject"><i class="fas fa-comment-alt text-secondary me-2"></i>Subject</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating premium-floating">
+                    <textarea class="form-control" name="message" id="contact-message" style="height: 150px" placeholder="Your Message" required></textarea>
+                    <label for="contact-message"><i class="fas fa-pen text-secondary me-2"></i>Your Message</label>
+                  </div>
+                </div>
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn-premium btn-primary-premium ripple w-100" style="justify-content: center; padding: 16px; font-size: 1.1rem; border-radius: var(--radius-md);">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Sub-Section -->
+      <div class="mt-5 pt-5">
+        <div class="section-header">
+          <span class="section-badge reveal"><i class="fas fa-headset"></i> Support</span>
+          <h3 class="section-title reveal" style="font-size: 1.8rem;">Need Help?</h3>
+        </div>
+        <div class="row g-4 justify-content-center" id="support-section">
+          <div class="col-md-4">
+            <div class="glass-card support-card reveal">
+              <div class="support-icon"><i class="fas fa-envelope-open-text"></i></div>
+              <h5>Email Support</h5>
+              <p class="text-secondary" style="color: var(--text-secondary); font-size: 0.9rem;">Get a response within
+                24 hours</p>
+              <a href="#" class="btn-premium btn-outline-premium mt-3" id="support-email-btn">
+                <i class="fas fa-envelope"></i> Email Me
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="glass-card support-card reveal">
+              <div class="support-icon"><i class="fab fa-whatsapp"></i></div>
+              <h5>WhatsApp</h5>
+              <p class="text-secondary" style="color: var(--text-secondary); font-size: 0.9rem;">Quick chat for urgent
+                queries</p>
+              <a href="#" class="btn-premium btn-outline-premium mt-3" id="support-whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat Now
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="glass-card support-card reveal">
+              <div class="support-icon"><i class="fas fa-phone-alt"></i></div>
+              <h5>Call Me</h5>
+              <p class="text-secondary" style="color: var(--text-secondary); font-size: 0.9rem;">Available during
+                business hours</p>
+              <a href="#" class="btn-premium btn-outline-premium mt-3" id="support-call-btn">
+                <i class="fas fa-phone-alt"></i> Call Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="footer-logo" id="footer-logo-text">Guru</div>
+          <p class="footer-desc">Building exceptional digital experiences with modern technologies and creative design.
+          </p>
+          <div class="footer-social" id="footer-social">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h6 class="footer-title">Quick Links</h6>
+          <a href="#hero" class="footer-link">Home</a>
+          <a href="#about" class="footer-link">About</a>
+          <a href="#skills" class="footer-link">Skills</a>
+          <a href="#projects" class="footer-link">Projects</a>
+          <a href="#contact" class="footer-link">Contact</a>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h6 class="footer-title">Sections</h6>
+          <a href="#experience" class="footer-link">Experience</a>
+          <a href="#education" class="footer-link">Education</a>
+          <a href="#certificates" class="footer-link">Certificates</a>
+          <a href="#achievements" class="footer-link">Achievements</a>
+          <a href="#services" class="footer-link">Services</a>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h6 class="footer-title">Get in Touch</h6>
+          <a href="#" class="footer-link" id="footer-email"><i class="fas fa-envelope me-2"></i>Email Me</a>
+          <a href="#" class="footer-link" id="footer-phone"><i class="fas fa-phone me-2"></i>Call Me</a>
+          <a href="#" class="footer-link" id="footer-location"><i class="fas fa-map-marker-alt me-2"></i>India</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; <span id="footer-year"></span> Guru. All rights reserved.</span>
+        <span class="visitor-count"><i class="fas fa-eye me-1"></i> Visitors: <span id="visitor-count">0</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════ BACK TO TOP ═══════════════ -->
+  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- ═══════════════ MUSIC TOGGLE ═══════════════ -->
+  <button id="music-toggle" aria-label="Toggle music"><i class="fas fa-music"></i></button>
+
+  <!-- ═══════════════ TOAST CONTAINER ═══════════════ -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ═══════════════ CONFIRM DIALOG ═══════════════ -->
+  <div class="confirm-dialog-overlay" id="confirm-dialog">
+    <div class="confirm-dialog">
+      <h4 id="confirm-title">Are you sure?</h4>
+      <p id="confirm-message">This action cannot be undone.</p>
+      <div class="confirm-dialog-actions">
+        <button class="btn-premium btn-outline-premium" id="confirm-cancel">Cancel</button>
+        <button class="btn-premium btn-primary-premium" id="confirm-ok">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ LIGHTBOX ═══════════════ -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <img src="" alt="Preview" id="lightbox-img">
+  </div>
+
+  <!-- ═══════════════ COMMAND PALETTE ═══════════════ -->
+  <div class="command-palette-overlay" id="command-palette-overlay">
+    <div class="command-palette">
+      <input type="text" class="command-palette-input" id="command-palette-input"
+        placeholder="Type a command... (e.g., /admin, /edit)" autocomplete="off" spellcheck="false">
+      <div class="command-palette-results" id="command-palette-results">
+        <!-- Rendered by JS -->
+      </div>
+      <div id="command-palette-password" style="display:none;">
+        <div class="password-prompt">
+          <p><i class="fas fa-lock me-2"></i>Enter admin password to continue</p>
+          <input type="password" id="admin-password-input" placeholder="Password" autocomplete="off">
+          <br>
+          <button class="btn-premium btn-primary-premium" onclick="verifyAdminPassword()">
+            <i class="fas fa-unlock"></i> Unlock
+          </button>
+          <div class="password-error" id="password-error">Incorrect password. Try again.</div>
+        </div>
+      </div>
+      <div class="command-palette-footer">
+        <span><kbd>↑↓</kbd> Navigate</span>
+        <span><kbd>Enter</kbd> Select</span>
+        <span><kbd>Esc</kbd> Close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ADMIN PANEL ═══════════════ -->
+  <div class="admin-overlay" id="admin-overlay">
+    <div class="admin-panel">
+      <!-- Sidebar -->
+      <div class="admin-sidebar" id="admin-sidebar">
+        <div class="admin-sidebar-header">
+          <div class="admin-sidebar-title">Admin Panel</div>
+          <div class="admin-sidebar-subtitle">Manage your portfolio</div>
+        </div>
+        <button class="admin-nav-item active" data-panel="dashboard"><i class="fas fa-th-large"></i> Dashboard</button>
+        <button class="admin-nav-item" data-panel="profile"><i class="fas fa-user"></i> Profile</button>
+        <button class="admin-nav-item" data-panel="skills"><i class="fas fa-cogs"></i> Skills</button>
+        <button class="admin-nav-item" data-panel="projects"><i class="fas fa-folder"></i> Projects</button>
+        <button class="admin-nav-item" data-panel="experience"><i class="fas fa-briefcase"></i> Experience</button>
+        <button class="admin-nav-item" data-panel="education"><i class="fas fa-graduation-cap"></i> Education</button>
+        <button class="admin-nav-item" data-panel="certificates"><i class="fas fa-certificate"></i>
+          Certificates</button>
+        <button class="admin-nav-item" data-panel="achievements"><i class="fas fa-trophy"></i> Achievements</button>
+        <div class="admin-nav-divider"></div>
+        <button class="admin-nav-item" data-panel="social"><i class="fas fa-share-alt"></i> Social Links</button>
+        <button class="admin-nav-item" data-panel="contact"><i class="fas fa-address-card"></i> Contact Details</button>
+        <button class="admin-nav-item" data-panel="services-admin"><i class="fas fa-concierge-bell"></i>
+          Services</button>
+        <button class="admin-nav-item" data-panel="support-admin"><i class="fas fa-headset"></i> Support</button>
+        <div class="admin-nav-divider"></div>
+        <button class="admin-nav-item" data-panel="theme"><i class="fas fa-palette"></i> Theme</button>
+        <button class="admin-nav-item" data-panel="export"><i class="fas fa-file-export"></i> Export</button>
+        <button class="admin-nav-item" data-panel="import"><i class="fas fa-file-import"></i> Import</button>
+        <button class="admin-nav-item" data-panel="settings"><i class="fas fa-sliders-h"></i> Settings</button>
+      </div>
+      <!-- Main Content -->
+      <div class="admin-main">
+        <div class="admin-header">
+          <h3 class="admin-header-title" id="admin-panel-title">Dashboard</h3>
+          <div class="admin-header-actions" style="display:flex; gap:10px; align-items:center;">
+            <button class="admin-nav-item logout-btn" onclick="logoutAdmin()" aria-label="Logout" style="background:var(--danger-color); color:#fff; border:none; padding:8px 16px; border-radius:var(--radius-md); font-weight:600; cursor:pointer;">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+            <button class="admin-close-btn" onclick="closeAdminPanel()" aria-label="Close admin panel">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="admin-content" id="admin-content">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ADMIN CRUD MODAL ═══════════════ -->
+  <div class="modal fade" id="adminCrudModal" tabindex="-1" style="z-index: 100000;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass-card admin-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="adminCrudModalTitle" style="font-weight: 600;">Edit Item</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="adminCrudModalBody">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-premium btn-outline-premium" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn-premium btn-primary-premium" id="adminCrudSaveBtn">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ PROJECT DETAIL MODAL ═══════════════ -->
+  <div class="modal fade project-modal" id="projectModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModalTitle">Project Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="projectModalBody">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+
+</html>
