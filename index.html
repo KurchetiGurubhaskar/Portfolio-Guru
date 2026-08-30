@@ -57,21 +57,29 @@
           <span class="logo-dot"></span>
           <span id="nav-logo-text">Guru</span>
         </a>
-        <button class="navbar-toggler d-lg-none" type="button" onclick="toggleMobileNav()"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="d-none d-lg-flex align-items-center gap-1" id="desktop-nav">
-          <a href="#hero" class="nav-link active" data-section="hero">Home</a>
-          <a href="#about" class="nav-link" data-section="about">About</a>
-          <a href="#skills" class="nav-link" data-section="skills">Skills</a>
-          <a href="#projects" class="nav-link" data-section="projects">Projects</a>
-          <a href="#experience" class="nav-link" data-section="experience">Experience</a>
-          <a href="#education" class="nav-link" data-section="education">Education</a>
-          <a href="#certificates" class="nav-link" data-section="certificates">Certificates</a>
-          <a href="#achievements" class="nav-link" data-section="achievements">Achievements</a>
-          <a href="#services" class="nav-link" data-section="services">Services</a>
-          <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        
+        <div class="d-flex align-items-center gap-3 gap-lg-4">
+          <div class="d-none d-lg-flex align-items-center gap-1" id="desktop-nav">
+            <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+            <a href="#about" class="nav-link" data-section="about">About</a>
+            <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+            <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+            <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+            <a href="#education" class="nav-link" data-section="education">Education</a>
+            <a href="#certificates" class="nav-link" data-section="certificates">Certificates</a>
+            <a href="#achievements" class="nav-link" data-section="achievements">Achievements</a>
+            <a href="#services" class="nav-link" data-section="services">Services</a>
+            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+          </div>
+
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button class="navbar-toggler d-lg-none" type="button" onclick="toggleMobileNav()"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         </div>
       </div>
       <!-- Mobile Nav -->

@@ -251,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyTheme();
   renderAll();
   initLoader();
+  initThemeToggle();
   initParticles();
   initScrollEffects();
   initTypingAnimation();
@@ -1062,11 +1063,21 @@ function applyTheme() {
   const html = document.documentElement;
 
   // Theme mode
+  let currentTheme = s.theme;
   if (s.theme === 'auto') {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-  } else {
-    html.setAttribute('data-theme', s.theme);
+    currentTheme = prefersDark ? 'dark' : 'light';
+  }
+  html.setAttribute('data-theme', currentTheme);
+
+  // Update toggle button icon
+  const themeIcon = document.querySelector('#theme-toggle i');
+  if (themeIcon) {
+    if (currentTheme === 'dark') {
+      themeIcon.className = 'fa-solid fa-moon';
+    } else {
+      themeIcon.className = 'fa-solid fa-sun';
+    }
   }
 
   // Accent
@@ -1086,6 +1097,21 @@ function applyTheme() {
   if (s.particles && particlesArray.length === 0 && particleCanvas) {
     createParticles();
     animateParticles();
+  }
+}
+
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      let currentTheme = portfolioData.settings.theme;
+      if (currentTheme === 'auto') {
+         currentTheme = document.documentElement.getAttribute('data-theme');
+      }
+      portfolioData.settings.theme = currentTheme === 'dark' ? 'light' : 'dark';
+      saveData();
+      applyTheme();
+    });
   }
 }
 
