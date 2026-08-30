@@ -339,7 +339,7 @@ function renderSkills() {
     div.innerHTML = `
       <div class="glass-card skill-card reveal" style="transition-delay: ${i * 0.05}s">
         <div class="skill-icon-wrapper">
-          <i class="${skill.icon}" style="color: ${skill.color || 'var(--accent)'}"></i>
+          <i class="${skill.icon}" style="color: var(--accent)"></i>
         </div>
         <div class="skill-name">${escHtml(skill.name)}</div>
         <div class="skill-bar">
