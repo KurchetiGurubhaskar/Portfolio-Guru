@@ -301,12 +301,10 @@ function renderProfile() {
   document.getElementById('footer-logo-text').textContent = p.name;
   document.title = `${p.name} — ${p.title} Portfolio`;
 
-  // Profile image
-  const profileImg = document.getElementById('hero-profile-img');
-  if (p.profilePhoto) {
-    profileImg.src = p.profilePhoto;
-  } else {
-    profileImg.src = `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(p.name.charAt(0))}&backgroundColor=3b82f6&textColor=ffffff&fontSize=42`;
+  // Profile letter
+  const profileLetter = document.querySelector('.hero-profile-letter');
+  if (profileLetter && p.name) {
+    profileLetter.textContent = p.name.charAt(0).toUpperCase();
   }
 
   // Resume link
@@ -337,9 +335,9 @@ function renderSkills() {
     const div = document.createElement('div');
     div.className = 'col-6 col-md-4 col-lg-3';
     div.innerHTML = `
-      <div class="glass-card skill-card reveal" style="transition-delay: ${i * 0.05}s">
+      <div class="glass-card skill-card reveal" style="transition-delay: ${i * 0.05}s; --card-color: ${skill.color || 'var(--accent)'};">
         <div class="skill-icon-wrapper">
-          <i class="${skill.icon}" style="color: var(--accent)"></i>
+          <i class="${skill.icon}" style="color: var(--card-color)"></i>
         </div>
         <div class="skill-name">${escHtml(skill.name)}</div>
         <div class="skill-bar">
@@ -429,17 +427,20 @@ function renderProjectsList(categoryFilter) {
       `;
     } else {
       imageHTML = `
-        <div style="overflow:hidden;border-radius:var(--radius-lg) var(--radius-lg) 0 0;">
+        <div class="project-img-wrapper">
           <img src="${images[0]}" alt="${escHtml(proj.title)}" class="project-card-img" loading="lazy">
         </div>
       `;
     }
 
+    const colors = ['#3b82f6', '#8b5cf6', '#10b981', '#f97316', '#e11d48', '#0ea5e9'];
+    const pColor = proj.color || colors[i % colors.length];
+
     const div = document.createElement('div');
     div.className = 'project-item';
     div.dataset.category = proj.category || '';
     div.innerHTML = `
-      <div class="glass-card project-card reveal" style="transition-delay: ${i * 0.08}s; cursor: pointer;" onclick="openProjectModal(${originalIndex})">
+      <div class="glass-card project-card reveal" style="transition-delay: ${i * 0.08}s; cursor: pointer; --card-color: ${pColor};" onclick="openProjectModal(${originalIndex})">
         ${imageHTML}
         <div class="project-card-body">
           <h5 class="project-card-title">${escHtml(proj.title)}</h5>
@@ -1998,12 +1999,7 @@ function renderAdminSupport(el) {
 function renderAdminTheme(el) {
   const s = portfolioData.settings;
   el.innerHTML = `
-    <h6 style="font-weight:600; margin-bottom:16px;">Theme Mode</h6>
-    <div class="theme-mode-btns">
-      <button class="theme-mode-btn ${s.theme === 'dark' ? 'active' : ''}" onclick="setThemeMode('dark')"><i class="fas fa-moon me-2"></i>Dark</button>
-      <button class="theme-mode-btn ${s.theme === 'light' ? 'active' : ''}" onclick="setThemeMode('light')"><i class="fas fa-sun me-2"></i>Light</button>
-      <button class="theme-mode-btn ${s.theme === 'auto' ? 'active' : ''}" onclick="setThemeMode('auto')"><i class="fas fa-adjust me-2"></i>Auto</button>
-    </div>
+
 
     <h6 style="font-weight:600; margin-bottom:16px;">Accent Color</h6>
     <div class="theme-presets">
